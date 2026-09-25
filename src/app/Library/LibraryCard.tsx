@@ -20,21 +20,21 @@ const LibraryCard = ({ workout }: { workout: Workout }) => {
                     {workout.muscleGroups.map((group) => (
                         <span
                             key={group}
-                            className="bg-[#C3F901] text-neutral-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase !font-inter"
+                            className="bg-[#C3F901] text-neutral-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase !font-oswald"
                         >
                             {group}
                         </span>
                     ))}
                 </div>
 
-                <h3 className="text-white font-bold text-lg !font-inter">
+                <h3 className="text-white font-bold text-lg !font-oswald">
                     {workout.name}
                 </h3>
-                <p className="text-neutral-400 text-sm mb-3 !font-inter">
+                <p className="text-neutral-400 text-sm mb-3 !font-oswald">
                     {workout.equipment}
                 </p>
 
-                <div className="flex items-center gap-4 border-t border-[#1D1F27] pt-3 text-neutral-300 text-sm !font-inter">
+                <div className="flex items-center gap-4 border-t border-[#1D1F27] pt-3 text-neutral-300 text-sm !font-oswald">
                     <span className="flex items-center gap-1">
                         <Clock size={14} />
                         {workout.duration} min
