@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Nav = () => {
     return (
-    <div className="border-b" style={{ borderColor: '#1D1F27' }}>
+    <div className="border-b sticky top-0 z-50 bg-[#0C0D10]" style={{ borderColor: '#1D1F27' }}>
       <div className="navbar container mx-auto px-4 sm:px-6">
         <div className="navbar-start">
           <div className="dropdown lg:hidden">
