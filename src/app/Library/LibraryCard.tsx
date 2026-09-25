@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { Clock, Flame, Star } from 'lucide-react';
 import { Workout } from '../types/type';
 
 const LibraryCard = ({ workout }: { workout: Workout }) => {
@@ -35,13 +36,16 @@ const LibraryCard = ({ workout }: { workout: Workout }) => {
 
                 <div className="flex items-center gap-4 border-t border-[#1D1F27] pt-3 text-neutral-300 text-sm !font-inter">
                     <span className="flex items-center gap-1">
-                        ⏱ {workout.duration} min
+                        <Clock size={14} />
+                        {workout.duration} min
                     </span>
                     <span className="flex items-center gap-1">
-                        🔥 {workout.caloriesBurned} kcal
+                        <Flame size={14} />
+                        {workout.caloriesBurned} kcal
                     </span>
                     <span className="flex items-center gap-1">
-                        ⭐ {workout.rating}
+                        <Star size={14} className="fill-current" />
+                        {workout.rating}
                     </span>
                 </div>
             </div>
