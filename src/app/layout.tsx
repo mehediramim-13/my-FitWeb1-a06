@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Oswald } from "next/font/google";
 import Nav from "./components/shared/Nav";
+import Footer from "./components/shared/Footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className={`min-h-full flex flex-col ${oswald.variable} bg-[#0C0D10]`}>
         <Nav></Nav>
   {children}
+    <Footer></Footer>
 </body>
     </html>
   );
