@@ -3,10 +3,19 @@ import React from 'react';
 import logo from '@/assets/logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { usePlan } from '@/app/workouts/PlanContent';
 
 const Nav = () => {
     const { plan, saved } = usePlan();
+    const pathname = usePathname();
+
+    const linkClass = (href: string) =>
+        `font-medium rounded-full px-3 py-1.5 transition-colors ${
+            pathname === href
+                ? 'bg-[#C3F901] text-neutral-900'
+                : 'text-neutral-400 hover:bg-[#1a2312] hover:text-[#c2f800]'
+        }`;
 
     return (
     <div className="border-b sticky top-0 z-50 bg-[#0C0D10]" style={{ borderColor: '#1D1F27' }}>
@@ -20,14 +29,14 @@ const Nav = () => {
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content bg-neutral-900 rounded-box z-1 mt-3 w-48 p-2 shadow" style={{ border: '1px solid #1D1F27' }}>
               <li>
-                <a className="font-medium rounded-full hover:bg-[#1a2312] hover:text-[#c2f800] text-neutral-400">
+                <Link href="/" className={linkClass('/')}>
                   Workouts
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="font-medium rounded-full hover:bg-[#1a2312] hover:text-[#c2f800] text-neutral-400">
+                <Link href="/my-plan" className={linkClass('/my-plan')}>
                   My Plan
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -39,14 +48,14 @@ const Nav = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2">
             <li>
-              <a className="font-medium rounded-full hover:bg-[#1a2312] hover:text-[#c2f800] text-neutral-400">
+              <Link href="/" className={linkClass('/')}>
                 Workouts
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="font-medium rounded-full hover:bg-[#1a2312] hover:text-[#c2f800] text-neutral-400">
+              <Link href="/my-plan" className={linkClass('/my-plan')}>
                 My Plan
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
