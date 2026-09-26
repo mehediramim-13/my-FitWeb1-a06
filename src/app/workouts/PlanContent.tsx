@@ -3,13 +3,14 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { Workout } from "../types/type";
 
 export const MAX_PLAN = 6;
+export type AddResult = "added" | "duplicate" | "full";
 
 interface PlanContextType {
   plan: Workout[];
   saved: Workout[];
-  addToPlan: (workout: Workout) => void;
+  addToPlan: (workout: Workout) => AddResult;
   removeFromPlan: (id: number) => void;
-  saveForLater: (workout: Workout) => void;
+  saveForLater: (workout: Workout) => AddResult;
   removeFromSaved: (id: number) => void;
 }
 
@@ -19,22 +20,21 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
 
-  const addToPlan = (workout: Workout) => {
-    setPlan((prev) =>
-      prev.some((w) => w.id === workout.id) || prev.length >= MAX_PLAN
-        ? prev
-        : [...prev, workout]
-    );
+  const addToPlan = (workout: Workout): AddResult => {
+    if (plan.some((w) => w.id === workout.id)) return "duplicate";
+    if (plan.length >= MAX_PLAN) return "full";
+    setPlan((prev) => [...prev, workout]);
+    return "added";
   };
 
   const removeFromPlan = (id: number) => {
     setPlan((prev) => prev.filter((w) => w.id !== id));
   };
 
-  const saveForLater = (workout: Workout) => {
-    setSaved((prev) =>
-      prev.some((w) => w.id === workout.id) ? prev : [...prev, workout]
-    );
+  const saveForLater = (workout: Workout): AddResult => {
+    if (saved.some((w) => w.id === workout.id)) return "duplicate";
+    setSaved((prev) => [...prev, workout]);
+    return "added";
   };
 
   const removeFromSaved = (id: number) => {

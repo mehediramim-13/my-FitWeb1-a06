@@ -7,4 +7,44 @@
 
 html {
   scroll-behavior: smooth;
+}.Toastify__toast-container {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 99999 !important;
+}
+
+.Toastify__toast {
+  background: #C3F901 !important;
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  padding: 14px 22px !important;
+  min-height: unset !important;
+  width: fit-content !important;
+  max-width: 90vw;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 4px 14px rgba(195, 249, 1, 0.3) !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+.Toastify__toast-body {
+  padding: 0 !important;
+  margin: 0 !important;
+  flex: none !important;
+  width: auto !important;
+  white-space: nowrap;
+}
+
+.Toastify__progress-bar {
+  display: none !important;
+}
+
+.Toastify__close-button {
+  color: #0a0a0a !important;
+  opacity: 0.6;
+}
+
+.Toastify__toast-icon {
+  display: none;
 }

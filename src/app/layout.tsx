@@ -5,23 +5,21 @@ import { Oswald } from "next/font/google";
 import Nav from "./components/shared/Nav";
 import Footer from "./components/shared/Footer";
 import { PlanProvider } from "./workouts/PlanContent";
+import { Toaster } from "react-hot-toast";
 
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-oswald-raw", 
+  variable: "--font-oswald-raw",
 });
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -37,9 +35,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className={`min-h-full flex flex-col bg-[#0C0D10] font-oswald`}>
         <PlanProvider>
-        <Nav></Nav>
-        {children}
-        <Footer></Footer>
+          <Nav />
+          {children}
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              duration: 2000,
+              style: {
+                background: "#C3F901",
+                color: "#0a0a0a",
+                fontWeight: 700,
+                fontSize: "14px",
+                borderRadius: "9999px",
+                padding: "12px 20px",
+                boxShadow: "0 4px 14px rgba(195, 249, 1, 0.3)",
+              },
+            }}
+          />
+          <Footer />
         </PlanProvider>
       </body>
     </html>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { Plus, Bookmark } from "lucide-react";
+import toast from "react-hot-toast";
 import { getWorkout } from "@/app/api/api";
 import { usePlan, MAX_PLAN } from "../PlanContent";
 import { Workout } from "@/app/types/type";
@@ -48,6 +49,26 @@ export default function WorkoutDetailsPage() {
     ["Calories", `${workout.caloriesBurned} kcal`],
     ["Rating", workout.rating],
   ];
+
+  const handleAddToPlan = () => {
+    const result = addToPlan(workout);
+    if (result === "added") {
+      toast.success("Added to today's plan!");
+    } else if (result === "duplicate") {
+      toast("Already added to your plan", { icon: "ℹ️" });
+    } else {
+      toast(`Plan is full (max ${MAX_PLAN} workouts)`, { icon: "⚠️" });
+    }
+  };
+
+  const handleSaveForLater = () => {
+    const result = saveForLater(workout);
+    if (result === "added") {
+      toast.success("Saved for later!");
+    } else {
+      toast("Already in your saved list", { icon: "ℹ️" });
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 py-10">
@@ -109,7 +130,7 @@ export default function WorkoutDetailsPage() {
 
           <div className="flex flex-wrap gap-3 mt-8">
             <button
-              onClick={() => addToPlan(workout)}
+              onClick={handleAddToPlan}
               disabled={planFull}
               className="bg-[#C3F901] text-neutral-900 font-semibold px-5 py-3 rounded-lg flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
             >
@@ -117,7 +138,7 @@ export default function WorkoutDetailsPage() {
               Add to today&apos;s plan
             </button>
             <button
-              onClick={() => saveForLater(workout)}
+              onClick={handleSaveForLater}
               className="border text-white font-semibold px-5 py-3 rounded-lg flex items-center gap-2"
               style={{ borderColor: "#1D1F27" }}
             >
