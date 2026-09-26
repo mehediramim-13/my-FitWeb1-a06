@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Search, ChevronDown } from "lucide-react";
 import LibraryCard from "./LibraryCard";
 import { Workout } from "../types/type";
 
@@ -70,10 +70,14 @@ const LibraryGrid = ({ workouts }: { workouts: Workout[] }) => {
           <div className="relative w-full sm:w-auto">
             <button
               onClick={() => setDropdownOpen((prev) => !prev)}
-              className="w-full sm:w-auto border rounded-lg px-4 py-2 text-sm font-medium text-[#C3F901] whitespace-nowrap"
+              className="w-full sm:w-auto border rounded-lg px-4 py-2 text-sm font-medium text-[#C3F901] whitespace-nowrap flex items-center justify-between gap-2"
               style={{ borderColor: "#C3F901" }}
             >
               {sortLabels[sortBy]}
+              <ChevronDown
+                size={16}
+                className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             {dropdownOpen && (

@@ -3,6 +3,7 @@
 import React from 'react';
 import banner from '@/assets/banner.png';
 import Image from 'next/image';
+import { ArrowDown } from 'lucide-react';
 
 const HeroBannerx = () => {
     const handleScrollToLibrary = () => {
@@ -24,9 +25,10 @@ const HeroBannerx = () => {
                     </p>
                     <button
                         onClick={handleScrollToLibrary}
-                        className="bg-[#C3F901] text-neutral-900 font-bold px-6 py-3 rounded-lg mt-8 transition-all duration-200 hover:bg-[#a8d900] hover:scale-105 active:scale-95 cursor-pointer"
+                        className="bg-[#C3F901] text-neutral-900 font-bold px-6 py-3 rounded-lg mt-8 transition-all duration-200 hover:bg-[#a8d900] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
                     >
                         BROWSE WORKOUTS
+                        <ArrowDown className="w-4 h-4" />
                     </button>
                 </div>
                 <div className="flex-shrink-0 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[400px]">

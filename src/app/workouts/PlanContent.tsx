@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Workout } from "../types/type";
 
-export const MAX_PLAN = 6;
+export const MAX_PLAN = 5;
 export type AddResult = "added" | "duplicate" | "full";
 
 interface PlanContextType {
