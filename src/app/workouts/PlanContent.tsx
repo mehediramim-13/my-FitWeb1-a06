@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { Workout } from "../types/type";
 
 export const MAX_PLAN = 5;
@@ -19,6 +19,23 @@ const PlanContext = createContext<PlanContextType | undefined>(undefined);
 export function PlanProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const storedPlan = localStorage.getItem("fitlog-plan");
+    const storedSaved = localStorage.getItem("fitlog-saved");
+    if (storedPlan) setPlan(JSON.parse(storedPlan));
+    if (storedSaved) setSaved(JSON.parse(storedSaved));
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (hydrated) localStorage.setItem("fitlog-plan", JSON.stringify(plan));
+  }, [plan, hydrated]);
+
+  useEffect(() => {
+    if (hydrated) localStorage.setItem("fitlog-saved", JSON.stringify(saved));
+  }, [saved, hydrated]);
 
   const addToPlan = (workout: Workout): AddResult => {
     if (plan.some((w) => w.id === workout.id)) return "duplicate";

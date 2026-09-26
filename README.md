@@ -22,6 +22,7 @@ FitLog is a dark, no-nonsense gym companion built for people who just want to pi
 3. **My Plan Page** - See everything you've added to today's plan or saved for later in separate tabs, with a live summary of total exercises, minutes, and calories.
 4. **Plan Management** - Mark a workout as done or remove it from your list, with instant toast feedback for every action. Today's plan is capped at 5 lifts so you finish what you start before loading more.
 5. **Polished UX Details** - A proper 404 page for unknown routes, a loading state while workout data is being fetched, and a fully responsive layout that works on mobile, tablet, and desktop.
+6. **Data Persistence** - Today's plan and saved workouts are stored in the browser's localStorage, so they stay put even after a page refresh or reopening the site later.
 
 ## Note
 
