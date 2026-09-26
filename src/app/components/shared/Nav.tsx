@@ -68,7 +68,7 @@ const Nav = () => {
 
         <div className="navbar-end flex items-center gap-2 sm:gap-4 text-sm">
           <Link href="/my-plan?tab=plan">
-            <button className="btn btn-ghost btn-sm sm:btn-md px-2 sm:px-3 flex items-center gap-1.5 sm:gap-2">
+            <button className="px-2 sm:px-3 py-1.5 flex items-center gap-1.5 sm:gap-2 cursor-pointer">
               <span className="text-white text-xs sm:text-sm">Plan</span>
               <span className="bg-[#C3F901] text-neutral-900 font-semibold w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0">
                 {plan.length}
@@ -76,7 +76,7 @@ const Nav = () => {
             </button>
           </Link>
           <Link href="/my-plan?tab=saved">
-            <button className="btn btn-ghost btn-sm sm:btn-md px-2 sm:px-3 flex items-center gap-1 sm:gap-1.5">
+            <button className="px-2 sm:px-3 py-1.5 flex items-center gap-1 sm:gap-1.5 cursor-pointer">
               <span className="text-neutral-400 font-medium text-xs sm:text-sm">Saved</span>
               <span className="border border-neutral-500 text-neutral-300 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0">
                 {saved.length}
