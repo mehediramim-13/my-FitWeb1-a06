@@ -33,28 +33,28 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} h-full antialiased`}
     >
-      <body className={`min-h-full flex flex-col bg-[#0C0D10] font-oswald`}>
-        <PlanProvider>
-          <Nav />
-          {children}
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              duration: 2000,
-              style: {
-                background: "#C3F901",
-                color: "#0a0a0a",
-                fontWeight: 700,
-                fontSize: "14px",
-                borderRadius: "9999px",
-                padding: "12px 20px",
-                boxShadow: "0 4px 14px rgba(195, 249, 1, 0.3)",
-              },
-            }}
-          />
-          <Footer />
-        </PlanProvider>
-      </body>
+    <body className={`min-h-full flex flex-col bg-[#0C0D10] font-oswald`}>
+  <PlanProvider>
+    <Nav />
+    <main className="flex-1">{children}</main>
+    <Toaster
+      position="top-center"
+      toastOptions={{
+        duration: 2000,
+        style: {
+          background: "#C3F901",
+          color: "#0a0a0a",
+          fontWeight: 700,
+          fontSize: "14px",
+          borderRadius: "9999px",
+          padding: "12px 20px",
+          boxShadow: "0 4px 14px rgba(195, 249, 1, 0.3)",
+        },
+      }}
+    />
+    <Footer />
+  </PlanProvider>
+</body>
     </html>
   );
 }

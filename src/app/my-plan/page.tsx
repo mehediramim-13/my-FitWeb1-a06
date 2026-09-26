@@ -1,14 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Flame, Star, Check, X } from "lucide-react";
 import toast from "react-hot-toast";
 import { usePlan, MAX_PLAN } from "../workouts/PlanContent";
 
-export default function MyPlanPage() {
+function MyPlanContent({ initialTab }: { initialTab: "plan" | "saved" }) {
   const { plan, saved, removeFromPlan, removeFromSaved } = usePlan();
-  const [activeTab, setActiveTab] = useState<"plan" | "saved">("plan");
+  const [activeTab, setActiveTab] = useState<"plan" | "saved">(initialTab);
 
   const list = activeTab === "plan" ? plan : saved;
 
@@ -151,5 +152,19 @@ export default function MyPlanPage() {
         )}
       </div>
     </div>
+  );
+}
+
+function MyPlanWrapper() {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab") === "saved" ? "saved" : "plan";
+  return <MyPlanContent key={tab} initialTab={tab} />;
+}
+
+export default function MyPlanPage() {
+  return (
+    <Suspense fallback={<div className="py-32 text-center text-neutral-400">Loading...</div>}>
+      <MyPlanWrapper />
+    </Suspense>
   );
 }
