@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, Flame, Star } from 'lucide-react';
 import { Workout } from '../types/type';
 
 const LibraryCard = ({ workout }: { workout: Workout }) => {
     return (
-        <div className="bg-neutral-900 rounded-xl overflow-hidden border border-[#1D1F27]">
+        <Link href={`/workouts/${workout.id}`} className="bg-neutral-900 rounded-xl overflow-hidden border border-[#1D1F27] block">
             <div className="relative w-full h-56">
                 <Image
                     src={workout.image}
@@ -49,7 +50,7 @@ const LibraryCard = ({ workout }: { workout: Workout }) => {
                     </span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

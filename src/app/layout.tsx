@@ -4,6 +4,7 @@ import "./globals.css";
 import { Oswald } from "next/font/google";
 import Nav from "./components/shared/Nav";
 import Footer from "./components/shared/Footer";
+import { PlanProvider } from "./workouts/PlanContent";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -35,9 +36,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col bg-[#0C0D10] font-oswald`}>
+        <PlanProvider>
         <Nav></Nav>
         {children}
         <Footer></Footer>
+        </PlanProvider>
       </body>
     </html>
   );

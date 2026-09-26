@@ -1,9 +1,13 @@
+"use client";
 import React from 'react';
 import logo from '@/assets/logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePlan } from '@/app/workouts/PlanContent';
 
 const Nav = () => {
+    const { plan, saved } = usePlan();
+
     return (
     <div className="border-b sticky top-0 z-50 bg-[#0C0D10]" style={{ borderColor: '#1D1F27' }}>
       <div className="navbar container mx-auto px-4 sm:px-6">
@@ -50,13 +54,13 @@ const Nav = () => {
           <Link href="">
             <button className="btn btn-ghost flex items-center gap-2">
               <span className="text-white">Plan</span>
-              <span className="bg-[#C3F901] text-neutral-900 font-semibold w-5 h-5 rounded-full flex items-center justify-center text-xs">0</span>
+              <span className="bg-[#C3F901] text-neutral-900 font-semibold w-5 h-5 rounded-full flex items-center justify-center text-xs">{plan.length}</span>
             </button>
           </Link>
           <Link href="">
             <button className="btn btn-ghost flex items-center gap-1.5">
               <span className="text-neutral-400 font-medium">Saved</span>
-              <span className="border border-neutral-500 text-neutral-300 w-5 h-5 rounded-full flex items-center justify-center text-xs">0</span>
+              <span className="border border-neutral-500 text-neutral-300 w-5 h-5 rounded-full flex items-center justify-center text-xs">{saved.length}</span>
             </button>
           </Link>
         </div>
