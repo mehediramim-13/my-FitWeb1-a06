@@ -2,7 +2,7 @@
 
 FitLog is a dark, no-nonsense gym companion built for people who just want to pick a lift, lock it into today's plan, and get moving. Browse a library of workouts, check out the details for each one, and keep track of what you're doing today versus what you've saved for later.
 
-**Live site:** [FitLog](https://my-fit-web1-a06.vercel.app/)
+**Live site:** https://my-fit-web1-a06.vercel.app/
 **GitHub repo:** https://github.com/mehediramim-13/my-FitWeb1-a06
 
 ## Technologies Used
